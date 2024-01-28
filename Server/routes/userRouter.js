@@ -5,6 +5,7 @@ const { authenticateToken } = require('../middlewares/authorizationMiddleWare');
 const multer = require('multer');
 const { fileUpload } = require('../Utils/firebaseSetup');
 const upload = multer({ storage: multer.memoryStorage() });
+
 userRoute.post('/login',UserController.userpost);
 
 userRoute.post('/register',UserController.userRegister);

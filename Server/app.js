@@ -1,16 +1,19 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-require('./Utils/DbConnection')
+require('./Utils/DbConnection');
+const morgan = require('morgan');
 const app = express();
 
 const adminRoute = require('./routes/adminRouter')
 const userRoute= require('./routes/userRouter')
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(morgan('combined'));
 
+app.use('/api/admin',adminRoute);
+app.use('/api/users',userRoute);
 
-app.use('/api/admin',adminRoute)
-app.use('/api/users',userRoute)
+ 
 
 app.use((obj, req, res, next) => {
   const statusCode = obj.status || 500;
