@@ -10,6 +10,7 @@ module.exports.userpost = async (req, res, next) => {
         const user = await User.findOne({ email });
 
         if (!user) {
+            
             return next(CreateError(404, 'User not found'));
         }
 
