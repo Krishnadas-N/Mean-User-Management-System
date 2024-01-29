@@ -2,8 +2,12 @@ const jwt = require('jsonwebtoken');
 const { CreateError } = require('../Utils/ResponseHandling');
 
 function authenticateToken(req, res, next) {
+
+  console.log(req.headers)
     const authHeader = req.headers['authorization']
     const token = authHeader && authHeader.split(' ')[1]
+
+    console.log(authHeader,token)
   
     if (token == null) return next(CreateError(403,"Token expired"))
   

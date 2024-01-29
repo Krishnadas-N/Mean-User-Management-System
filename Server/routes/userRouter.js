@@ -16,6 +16,6 @@ userRoute.get('/profile',authenticateToken,UserController.profile);
 
 userRoute.post('/logout',authenticateToken,UserController.logout)
 
-userRoute.post('/uploadImage/:userId',upload.single('profileImage'),fileUpload)
+userRoute.patch('/uploadImage/:userId',upload.single('profileImage'),fileUpload)
 
 module.exports=userRoute

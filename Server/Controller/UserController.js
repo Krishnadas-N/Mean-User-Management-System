@@ -72,13 +72,14 @@ module.exports.userRegister = async (req, res, next) => {
 
 module.exports.profile= async(req,res,next)=>{
     try{
-        const user = await User.findOne({_id:req.user});
+        const user = await User.findOne({_id:req.user.userId});
 
         if(!user){
             throw new Error('User Not found')
         }
 
         const UserDetails={
+            username:user.username,
             id:user._id,
             firstName:user.firstname,
             lastname:user.lastname,
